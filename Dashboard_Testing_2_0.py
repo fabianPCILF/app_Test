@@ -1,40 +1,4 @@
-import streamlit as st
-import streamlit_shadcn_ui as ui
-import pandas as pd
-import mysql.connector
-import numpy as np
-import pyodbc
-import time
-from sqlalchemy import create_engine, Table, MetaData
-from decimal import Decimal, ROUND_HALF_UP
 
-
-# Session state initialization
-st.session_state.projeckt_number = ""
- 
-# Page configuration
-st.set_page_config(
-     page_title="ILF Test Control Dashboard",
-     layout="wide",
-     page_icon=":bar_chart:"
-)
- 
-def get_mysql_connection():
-    engine = create_engine('mysql+mysqlconnector://root:admin@127.0.0.1/control_db')
-    return engine.connect()
-
-
-def get_sql_server_connection():
-    server = 'DEMUCSDB031\\PRIMAVERA'
-    database = 'PMDB15'
-    username = 'privuser'
-    password = 'PrimaPriv01'
-    connection_string = f'DRIVER={{SQL Server}};SERVER={server};DATABASE={database};UID={username};PWD={password}'
-    return pyodbc.connect(connection_string)
-
-
-
-def Main():
     # Main title
     st.title("Control Dashboard")
     
